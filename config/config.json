@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "u380048825_josue",
-    "password": "appTest",
-    "database": "u380048825_test",
-    "host": "sql158.main-hosting.eu.",
+    "username": "usertest",
+    "password": "Informatic0",
+    "database": "apptestmusic",
+    "host": "db4free.net",
     "dialect": "mysql", "define": {
       "timestamps": false
     },
