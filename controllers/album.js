@@ -20,8 +20,11 @@ create = (req, res) => {
 
     album
         .create(albumSave)
-        .then((data) => {
-            res.json(data);
+        .then((album) => {
+            res.satuts(200).json({
+                ok: true,
+                album
+            });
         })
         .catch((err) => {
             res.status(400).json({
