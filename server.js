@@ -25,17 +25,6 @@ app.use(function (req, res, next) {
 
 app.use(require('./routes'));
 
-// require('./routes')(app);
-
 app.listen(process.env.PORT, () => {
     console.log(`Listening in the port: ${process.env.PORT}`);
 });
-
-
-
-// db
-//     .authenticate()
-//     .then(() => console.log('Connection established correctly in the db'))
-//     .catch(err => console.error(`Error connecting in the db: ${err}`))
-
-
