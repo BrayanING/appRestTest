@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "usertest",
-    "password": "Informatic0",
+    "username": "root",
+    "password": null,
     "database": "apptestmusic",
-    "host": "db4free.net",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     "define": {
       "timestamps": false

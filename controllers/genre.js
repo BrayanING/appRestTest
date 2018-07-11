@@ -5,7 +5,6 @@ var bcrypt = require('bcrypt');
 const _ = require('underscore');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-genre.sync();
 
 create = (req, res) => {
     let body = req.body;

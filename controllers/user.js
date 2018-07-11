@@ -6,7 +6,7 @@ const _ = require('underscore');
 var jwt = require('jsonwebtoken');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-user.sync();
+
 
 create = (req, res) => {
     let body = req.body;

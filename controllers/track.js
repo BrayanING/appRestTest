@@ -4,8 +4,6 @@ var app = express();
 var bcrypt = require('bcrypt');
 const _ = require('underscore');
 
-track.sync();
-
 create = (req, res) => {
     let body = req.body;
     let trackSave = {};

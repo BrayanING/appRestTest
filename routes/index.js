@@ -27,6 +27,7 @@ app.put('/artist/:id', artistController.update);
 app.delete('/artist/:id', artistController.updateStatus);
 
 app.get('/album', albumController.listAll);
+app.get('/album/collection/:name', albumController.collectionAlbum);
 app.post('/album', albumController.create);
 app.put('/album/:id', albumController.update);
 app.delete('/album/:id', albumController.updateStatus);

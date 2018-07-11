@@ -25,19 +25,19 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: true
     }
-  }, {
-    associate: function (models) {
-      Artist.belongsTo(models.User, {
-        foreignKey: 'userId',
-        onDelete: 'CASCADE'
-      });
+  }, {});
 
-      Artist.hasMany(models.Album, {
-        foreignKey: 'artistId',
-        onDelete: 'CASCADE'
-      });
-    }
-  });
+  Artist.associate = function (models) {
+    Artist.belongsTo(models.User, {
+      foreignKey: 'userId',
+      onDelete: 'CASCADE'
+    });
+
+    Artist.hasMany(models.Album, {
+      foreignKey: 'artistId',
+      onDelete: 'CASCADE'
+    });
+  }
 
   return Artist;
 };

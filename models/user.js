@@ -33,29 +33,29 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: true
     }
-  }, {
-    associate: function(models) { 
-      User.hasMany(models.Genre, { 
-        foreignKey: 'userId',
-        onDelete: 'CASCADE'
-      });
+  }, {});
 
-      User.hasMany(models.Artist, {
-        foreignKey:'userId',
-        onDelete: 'CASCADE'
-      })
+  User.associate = function (models) {
+     User.hasMany(models.Genre, {
+       foreignKey: 'userId',
+       onDelete: 'CASCADE'
+     });
 
-      User.hasMany(models.Album, {
-        foreignKey: 'userId',
-        onDelete: 'CASCADE'
-      });
+     User.hasMany(models.Artist, {
+       foreignKey: 'userId',
+       onDelete: 'CASCADE'
+     })
 
-      User.hasMany(models.Track, {
-        foreignKey: 'userId',
-        onDelete: 'CASCADE'
-      });
+     User.hasMany(models.Album, {
+       foreignKey: 'userId',
+       onDelete: 'CASCADE'
+     });
 
-    }
-  });
+     User.hasMany(models.Track, {
+       foreignKey: 'userId',
+       onDelete: 'CASCADE'
+     });
+  };
+
   return User;
 };

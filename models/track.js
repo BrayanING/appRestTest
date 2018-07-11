@@ -33,21 +33,18 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: true
     }
     
-  }, {
-    associate: function (models) {
-      Track.belongsTo(models.User, {
-        foreignKey: 'userId',
-        onDelete: 'CASCADE'
-      });
-
-      Track.belongsTo(models.Album, {
-        foreignKey: 'albumId',
-        onDelete: 'CASCADE'
-      });
-    }
-  });
+  }, {});
   Track.associate = function (models) {
-    // associations can be defined here
+    Track.belongsTo(models.User, {
+      foreignKey: 'userId',
+      onDelete: 'CASCADE'
+    });
+
+    Track.belongsTo(models.Album, {
+      foreignKey: 'albumId',
+      onDelete: 'CASCADE'
+    });
   };
+  
   return Track;
 };

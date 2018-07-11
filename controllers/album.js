@@ -1,10 +1,12 @@
 var express = require('express');
 var album = require('../models').Album;
+var artist = require('../models').Artist;
+var genre = require('../models').Genre;
 var app = express();
 var bcrypt = require('bcrypt');
 const _ = require('underscore');
-
-album.sync();
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 create = (req, res) => {
     let body = req.body;
@@ -21,7 +23,7 @@ create = (req, res) => {
     album
         .create(albumSave)
         .then((album) => {
-            res.satuts(200).json({
+            res.status(200).json({
                 ok: true,
                 album
             });
@@ -38,10 +40,43 @@ listAll = (req, res) => {
     album.findAll({
             where: {
                 status: true
+            },
+            include: [{
+                model: artist,
+                required: true
+            }]
+        })
+        .then((albums) => {
+            res.status(200).json({
+                ok: true,
+                albums
+            });
+        })
+        .catch((err) => {
+            res.status(400).json({
+                ok: false,
+                err: {
+                    message: err.message
+                }
+            });
+        });
+};
+
+collectionAlbum = (req, res) => {
+    var name = req.params.name;
+    album.findAll({
+            where: {
+                status: true,
+                name: {
+                    [Op.like]: `%${name}%`
+                }
             }
         })
-        .then((data) => {
-            res.json(data);
+        .then((albums) => {
+            res.status(200).json({
+                ok: true,
+                albums
+            });
         })
         .catch((err) => {
             res.status(400).json({
@@ -64,8 +99,11 @@ update = (req, res) => {
         .then((album) => {
             album
                 .update(updateAlbum)
-                .then((data) => {
-                    res.json(data);
+                .then((album) => {
+                    res.status(200).json({
+                        ok: true,
+                        album
+                    });
                 })
                 .catch((err) => {
                     res.status(400).json({
@@ -103,8 +141,11 @@ updateStatus = (req, res) => {
 
             album
                 .update(updateAlbum)
-                .then((data) => {
-                    res.json(data);
+                .then((album) => {
+                    res.status(200).json({
+                        ok: true,
+                        album
+                    });
                 })
                 .catch((err) => {
                     res.status(400).json({
@@ -125,6 +166,7 @@ updateStatus = (req, res) => {
 module.exports = {
     create,
     listAll,
+    collectionAlbum,
     update,
     updateStatus
 }

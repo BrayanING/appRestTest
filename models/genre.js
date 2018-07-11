@@ -28,18 +28,19 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: true,
       allowNull: false
     }
-  }, {
-    associate: function (models) {
-      Genre.belongsTo(models.User, {
-        foreignKey: 'userId',
-        onDelete: 'CASCADE'
-      });
+  }, {});
 
-      Genre.hasMany(models.Album, {
-        foreignKey: 'genreId',
-        onDelete: 'CASCADE'
-      });
-    }
-  });
+  Genre.associate = function (models) {
+    Genre.belongsTo(models.User, {
+      foreignKey: 'userId',
+      onDelete: 'CASCADE'
+    });
+
+    Genre.hasMany(models.Album, {
+      foreignKey: 'genreId',
+      onDelete: 'CASCADE'
+    });
+  };
+
   return Genre;
 };
