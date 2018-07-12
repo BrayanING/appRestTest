@@ -1,6 +1,6 @@
 # REST API
 
-Aplicación CRUD
+Application CRUD
 
 ``` npm install ```
 
