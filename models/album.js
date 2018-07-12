@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     dateReleased: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false
     },
     genreId: {
@@ -46,21 +46,12 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE'
     });
 
-    Album.belongsTo(models.Artist, {
-      foreignKey: 'ArtistId',
+    Album.belongsTo(models.Genre, {
+      foreignKey: 'genreId',
       onDelete: 'CASCADE'
     });
 
-    Album.belongsTo(models.User, {
-      foreignKey: 'userId',
-      onDelete: 'CASCADE'
-    });
-
-    Album.hasMany(models.Track, {
-      foreignKey: 'albumId',
-      onDelete: 'CASCADE'
-    });
   };
-  
+
   return Album;
 };

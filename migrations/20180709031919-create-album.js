@@ -30,7 +30,7 @@ module.exports = {
         }
       },
       dateReleased: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: false
       },
       genreId: {

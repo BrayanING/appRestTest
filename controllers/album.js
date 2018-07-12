@@ -41,10 +41,18 @@ listAll = (req, res) => {
             where: {
                 status: true
             },
-            include: [{
-                model: artist,
-                required: true
-            }]
+            include: [
+                {
+                    model: artist,
+                    required: true,
+                    attributes: ['id', 'name']
+                },
+                {
+                    model: genre,
+                    required: true,
+                    attributes: ['id', 'name']
+                }
+            ]
         })
         .then((albums) => {
             res.status(200).json({
@@ -70,7 +78,18 @@ collectionAlbum = (req, res) => {
                 name: {
                     [Op.like]: `%${name}%`
                 }
-            }
+            },
+            include: [{
+                    model: artist,
+                    required: true,
+                    attributes: ['id', 'name']
+                },
+                {
+                    model: genre,
+                    required: true,
+                    attributes: ['id', 'name']
+                }
+            ]
         })
         .then((albums) => {
             res.status(200).json({
