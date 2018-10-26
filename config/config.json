@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "usertest",
-    "password": "Informatic0",
+    "username": "root",
+    "password": "",
     "database": "apptestmusic",
-    "host": "db4free.net",
+    "host": "localhost",
     "dialect": "mysql",
     "define": {
       "timestamps": false
@@ -11,10 +11,10 @@
     "operatorsAliases": false
   },
   "test": {
-    "username": "usertest",
-    "password": "Informatic0",
+    "username": "root",
+    "password": "",
     "database": "apptestmusic",
-    "host": "db4free.net",
+    "host": "localhost",
     "dialect": "mysql",
     "define": {
       "timestamps": false
@@ -22,10 +22,10 @@
     "operatorsAliases": false
   },
   "production": {
-    "username": "usertest",
-    "password": "Informatic0",
+    "username": "root",
+    "password": "",
     "database": "apptestmusic",
-    "host": "db4free.net",
+    "host": "localhost",
     "dialect": "mysql",
     "define": {
       "timestamps": false
